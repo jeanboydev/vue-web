@@ -56,6 +56,12 @@ module.exports = {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
         // loader: 'url-loader',
         use: [{
+          loader: 'url-loader',
+          options: {
+            limit: 10000,
+            name: utils.assetsPath('img/[name].[hash:7].[ext]')
+          }
+        }, {
           loader: 'file-loader',
           options: {}
         }, {
@@ -68,11 +74,7 @@ module.exports = {
           options: {
             bypassOnDebug: true
           },
-        }],
-        options: {
-          limit: 10000,
-          name: utils.assetsPath('img/[name].[hash:7].[ext]')
-        }
+        }]
       },
       {
         test: /\.(mp4|webm|ogg|mp3|wav|flac|aac)(\?.*)?$/,
@@ -89,43 +91,9 @@ module.exports = {
           limit: 10000,
           name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
         }
-      },
-      {
-        test: /\.css$/,
-        use: [{
-          loader: 'style-loader'
-        }, {
-          loader: 'css-loader',
-          options: {
-            importLoaders: 1
-          }
-        }, {
-          loader: 'postcss-loader',
-          options: {
-            parser: 'sugarss',
-            exec: true,
-            plugins: function () {
-              return [
-                require('precss'),
-                require('autoprefixer')
-              ];
-            }
-          }
-        }, {
-          loader: 'sass-loader'
-        }]
       }
     ]
   },
-  plugins: [ // 配置全局使用 jquery
-    new webpack.ProvidePlugin({
-      $: "jquery",
-      jQuery: "jquery",
-      jquery: "jquery",
-      "window.jQuery": "jquery",
-      Popper: ['popper.js', 'default']
-    })
-  ],
   node: {
     // prevent webpack from injecting useless setImmediate polyfill because Vue
     // source contains it (although only uses it if it's native).

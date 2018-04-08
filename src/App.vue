@@ -1,15 +1,29 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <router-view/>
+    <!-- <img src="./assets/logo.png"> -->
+    <!-- <router-view/> -->
 
 
     <div class="btn-group" role="group" aria-label="...">  
       <button type="button" class="btn btn-default">Left</button>  
       <button type="button" class="btn btn-default">Middle</button>  
       <button type="button" class="btn btn-default">Right</button>  
-    </div>  
-  </div>
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-sm">
+          One of three columns
+        </div>
+        <div class="col-sm">
+          One of three columns
+        </div>
+        <div class="col-sm">
+          One of three columns
+        </div>
+      </div>
+    </div>
+</div>
 </template>
 
 <script>
